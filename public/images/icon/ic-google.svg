@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52">
+    <circle data-name="타원 965" cx="26" cy="26" r="26" style="fill:#fff"/>
+    <g data-name="그룹 21068">
+        <path d="M19.816 9.668a12.953 12.953 0 0 0-.2-2.3H9v4.358h6.063a5.183 5.183 0 0 1-2.248 3.4v2.827h3.641a10.988 10.988 0 0 0 3.359-8.281z" transform="translate(17.149 16.742)" style="fill-rule:evenodd;fill:#4285f4"/>
+        <path data-name="Shape" d="M11.025 19.836a10.756 10.756 0 0 0 7.456-2.73l-3.641-2.827A6.8 6.8 0 0 1 4.721 10.71H.957v2.919a11.262 11.262 0 0 0 10.068 6.207z" transform="translate(15.123 17.584)" style="fill:#34a853;fill-rule:evenodd"/>
+        <path data-name="Shape" d="M4.962 12.159a6.661 6.661 0 0 1 0-4.281v-2.92H1.2a11.281 11.281 0 0 0 0 10.119l3.764-2.919z" transform="translate(14.882 16.136)" style="fill:#fbbc05;fill-rule:evenodd"/>
+        <path data-name="Shape" d="M11.025 4.481a6.087 6.087 0 0 1 4.307 1.685l3.231-3.231A10.828 10.828 0 0 0 11.025 0 11.262 11.262 0 0 0 .957 6.207l3.764 2.919a6.714 6.714 0 0 1 6.3-4.645z" transform="translate(15.123 14.887)" style="fill:#ea4335;fill-rule:evenodd"/>
+    </g>
+</svg>

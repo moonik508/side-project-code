@@ -1,0 +1,217 @@
+.btn.btn-swiper{
+  position: fixed;
+  z-index: 5000;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0;
+  width: 60px;
+  height: 32px;
+  transition: width .3s, background-image .3s;
+}
+.btn-swiper.prev{
+  right: 50%;
+  margin-right: 240px;
+  background-image: url('/images/icon/ic-btn-swipe-prev.svg');
+  background-size: contain;
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+.btn-swiper.next{
+  left: 50%;
+  margin-left: 240px;
+  background-image: url('/images/icon/ic-btn-swipe-next.svg');
+  background-size: contain;
+  background-position: top left;
+  background-repeat: no-repeat;
+}
+.btn-swiper.prev:hover{
+  width: 70px;
+  background-image: url('/images/icon/ic-btn-swipe-prev-hover.svg');
+}
+.btn-swiper.next:hover{
+  width: 70px;
+  background-image: url('/images/icon/ic-btn-swipe-next-hover.svg');
+}
+.card-wrap{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  margin: 0 auto;
+  display: inline-block;
+  transform-style: preserve-3d;
+  width: 404px;
+  height: 652px;
+  z-index: 1000;
+}
+.card{
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  border-radius: 40px;
+  transform: translate3d(0, 0, -100px);
+  transition: transform .5s;
+  transform-style: preserve-3d;
+  box-shadow: 5px 10px 11px 5px rgba(0, 0, 0, .1);
+}
+.card:nth-child(2){
+  transform: translate3d(0, 0, -100px) rotateZ(4deg);
+}
+.card:nth-child(3){
+  transform: translate3d(0, 0, -100px) rotateZ(8deg);
+}
+.card:nth-last-child(2){
+  transform: translate3d(0, 0, -160px);
+}
+
+.card:last-child{
+  transform: perspective(1350px) translate3d(-100vw, 40px, 0) rotateY(-40deg) rotateZ(-10deg);
+  transition: transform 0.35s cubic-bezier(0, 0.55, 1, 1);
+}
+.card.is-prev-hover{
+  transform: perspective(1350px) translate3d(-55vw, 0px, 10px) rotateY(0deg) rotateZ(0deg);
+  transition: transform 0.35s cubic-bezier(0, 0.55, 1, 1);
+}
+.card.is-next-hover{
+  transform: perspective(1400px) translate3d(400px, 0px, 0) rotateY(30deg) rotateZ(0deg);
+  transition: transform 0.35s cubic-bezier(0, 0.55, 1, 1);
+}
+.card.is-next-out{
+  -webkit-transform: perspective(1400px) translate3d(100vw, 0px, 0) rotateY(180deg) rotateZ(0deg);
+  transform: perspective(1400px) translate3d(100vw, 0px, 0) rotateY(180deg) rotateZ(0deg);
+  transition: transform 3s cubic-bezier(0.04, 0.63, 0.69, 0.95);
+}
+.card.is-prev-in{
+  transform: perspective(1350px) translate3d(0, 0, -100px) rotateY(0) rotateZ(0) !important;
+  transition: transform 0.35s cubic-bezier(0, 0.55, 1, 1);
+}
+.question-swiper{
+  overflow: visible !important;
+  position: fixed !important;
+  z-index: 300;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 200px;
+}
+.question-swiper .swiper-wrapper{
+  align-items: center;
+}
+.question-swiper .swiper-slide{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.question-swiper .swiper-slide-active{
+  padding: 0;
+  align-items: center;
+  z-index: 2;
+  transform: scale(4) !important;
+}
+.question-swiper .swiper-question-box {
+  display: none;
+}
+.question-swiper .swiper-slide-active .swiper-question-box{
+  display: block;
+  position: absolute;
+  top: 0;
+  margin-top: 70px;
+  text-align: center;
+}
+.question-swiper .swiper-slide-active .swiper-question-box .title {
+  line-height: 6px;
+  padding: 1px 3px;
+  background-color: rgba(255,255,255,.2);
+  border-radius: 100px;
+  color: #fff;
+  font-size: calc(16px * 0.25);
+}
+.question-swiper .swiper-slide-active .swiper-question-box .desc {
+  color: #fff;
+  font-size: calc(28px * 0.25);
+}
+.question-swiper .swiper-slide .swiper-img-box{
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.question-swiper .swiper-slide .swiper-img-box img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mySwiperEffect{
+  position: fixed !important;
+  overflow: visible !important;
+  top: 50%;
+  left: 50%;
+  z-index: 400;
+  width: 31.25vw;
+  height: 52.08vw;
+  transform: translate(-50%, -50%);
+}
+.mySwiperEffect .swiper-slide{
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .question-swiper .swiper-slide-active {
+    transform: scale(3) !important;
+  }
+  .btn.btn-swiper {
+   display: none;
+  }
+  .card {
+    padding: 1.04vw;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.3);
+  }
+  .question-swiper .swiper-slide-active .swiper-question-box .title {
+    line-height: 6px;
+    padding: 3px 6px;
+    font-size: calc(14px * 0.4);
+  }
+  .question-swiper .swiper-slide-active .swiper-question-box .desc {
+    font-size: calc(20px * 0.4);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .question-swiper .swiper-slide-active .swiper-question-box {
+    margin-top: 80px;
+  }
+  .mySwiperEffect {
+    width: 64vw;
+    height: 106.67vw;
+  }
+  .question-swiper .swiper-slide-active .swiper-question-box .title {
+    padding: 0.8vw 1.6vw;
+    font-size: calc(3.73vw * 0.3);
+  }
+  .question-swiper .swiper-slide-active .swiper-question-box .desc {
+    font-size: calc(5.33vw * 0.3);
+  }
+  .card {
+    padding: 1.67vw;
+  }
+  .bottom_tab_box {
+    display: flex;
+    align-items: center;
+    padding: 2.13vw;
+    bottom: 8.53vw;
+  }
+  .bottom_tab_box button {
+    width: 26.67vw;
+    padding: 2.13vw 0;
+  }
+  .bottom_tab_box button span {
+    font-size: 4.27vw;
+  }
+}
+

@@ -1,0 +1,55 @@
+name: personal-project
+on:
+  push:
+    branches:
+      - main
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: set env
+        run: |
+          if [[ $GITHUB_REF == 'refs/heads/dev' ]]; then
+              echo "S3_BUCKET=${{ secrets.PERSONAL_BUCKET_NAME}}" >> $GITHUB_ENV
+              echo "S3_BUCKET_REGION=ap-northeast-2" >> $GITHUB_ENV
+              echo "CLOUDFORNT_DIST_ID=${{ secrets.AWS_DISTRIBUTION_ID }}" >> $GITHUB_ENV
+              echo "BUILD_COMMAND=build-dev" >> $GITHUB_ENV
+          fi
+
+      - name: Caching
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ env.BUILD_COMMAND }}-elypecs-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.BUILD_COMMAND }}-elypecs-yarn-
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: |
+          yarn
+
+      - name: Build
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+        run: |
+          yarn ${{ env.BUILD_COMMAND }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_SECRET_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws s3 sync ./dist s3://$S3_BUCKET
+          aws cloudfront create-invalidation --distribution-id ${{ env.AWS_DISTRIBUTION_ID }} --paths "/*"
